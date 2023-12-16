@@ -1,6 +1,6 @@
 import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import * as bcrypt from 'bcrypt'
-import { Commnent } from "./comment.entity";
+import { Comment } from "./comment.entity";
 
 
 @Entity()
@@ -18,7 +18,7 @@ export class User {
     @Column({nullable: false})
     password: string
 
-    @OneToMany((type) => Commnent, (comment) => comment.user)
+    @OneToMany((type) => Comment, (comment) => comment.user)
     comments: Comment[];
 
     @BeforeInsert()

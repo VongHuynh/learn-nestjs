@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Commnent } from "./comment.entity";
+import { Comment } from "./comment.entity";
 
 
 
@@ -15,7 +15,7 @@ export class Topic {
     @Column()
     description: string;
 
-    @OneToMany((type) => Commnent, (comment) => comment.topic)
-    comments: Commnent[];
+    @OneToMany((type) => Comment, (comment) => comment.topic)
+    comments: Comment[];
 
 }

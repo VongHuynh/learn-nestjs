@@ -4,7 +4,7 @@ import { User } from './user.entity';
 
 
 @Entity()
-export class Commnent {
+export class Comment {
     @PrimaryGeneratedColumn()
     id: number;
 
