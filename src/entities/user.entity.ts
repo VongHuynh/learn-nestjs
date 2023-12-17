@@ -1,5 +1,5 @@
 import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import * as bcrypt from 'bcrypt'
+import * as bcrypt from 'bcrypt';
 import { Comment } from "./comment.entity";
 
 
@@ -22,7 +22,7 @@ export class User {
     comments: Comment[];
 
     @BeforeInsert()
-    async hashPasword(){
-        this.password = await bcrypt(this.password, 10)
+    async hashPassword(){
+        this.password = await bcrypt.hash(this.password, 10)
     }
 }
