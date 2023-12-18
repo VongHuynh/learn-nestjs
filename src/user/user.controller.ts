@@ -23,7 +23,7 @@ export class UserController {
 
     @Put(":id")
     update(@Param("id") id: number, @Body() updateUserDto: updateUserDto){
-        const user = this.userService.update(id, updateUserDto);
+        const user = this.userService.update(+id, updateUserDto);
         return user;
     }
 

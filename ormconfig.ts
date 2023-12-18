@@ -2,16 +2,18 @@ import { Comment } from "src/entities/comment.entity";
 import { Topic } from "src/entities/topic.entity";
 import { User } from "src/entities/user.entity";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
+import { config } from "dotenv"
 
 
 
-const config: PostgresConnectionOptions = {
+config({ path: process.env.NODE_ENV ?  `.env.${process.env.NODE_ENV}` : '.env' });
+const configorm: PostgresConnectionOptions = {
     type: "postgres",
-    database: "testDB",
-    host: "localhost",
-    port: 5435,
-    username: "postgres",
-    password: "postgres",
+    database: process.env.POSTGRES_NAME,
+    host: process.env.POSTGRES_HOST,
+    port: parseInt(process.env.POSTGRES_PORT),
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
     entities: [User, Comment, Topic],
     migrations: [
         "src/migrations/*.ts",
@@ -20,4 +22,4 @@ const config: PostgresConnectionOptions = {
     synchronize: true
 }
 
-export default config;
+export default configorm;
