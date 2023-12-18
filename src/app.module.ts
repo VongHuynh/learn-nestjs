@@ -13,7 +13,8 @@ import { redisConfig } from 'src/config/redisConfig';
 @Module({
   imports: [
           UserModule, 
-          CommentModule, TypeOrmModule.forRoot(configOrm), 
+          CommentModule, 
+          TypeOrmModule.forRoot(configOrm), 
           CacheModule.register(redisConfig)
         ],
   controllers: [AppController],
