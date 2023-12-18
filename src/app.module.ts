@@ -4,10 +4,18 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { CommentModule } from './comment/comment.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import configorm from 'ormconfig';
+import configOrm from 'src/config/ormConfig';
+import { CacheModule } from '@nestjs/cache-manager';
+import { redisConfig } from 'src/config/redisConfig';
+
+
 
 @Module({
-  imports: [UserModule, CommentModule, TypeOrmModule.forRoot(configorm)],
+  imports: [
+          UserModule, 
+          CommentModule, TypeOrmModule.forRoot(configOrm), 
+          CacheModule.register(redisConfig)
+        ],
   controllers: [AppController],
   providers: [AppService],
 })

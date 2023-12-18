@@ -7,7 +7,7 @@ import { config } from "dotenv"
 
 
 config({ path: process.env.NODE_ENV ?  `.env.${process.env.NODE_ENV}` : '.env' });
-const configorm: PostgresConnectionOptions = {
+const configOrm: PostgresConnectionOptions = {
     type: "postgres",
     database: process.env.POSTGRES_NAME,
     host: process.env.POSTGRES_HOST,
@@ -22,4 +22,4 @@ const configorm: PostgresConnectionOptions = {
     synchronize: true
 }
 
-export default configorm;
+export default configOrm;

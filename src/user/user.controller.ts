@@ -3,6 +3,7 @@ import { CreateUserDto } from './dto/createUserDto';
 import { UserService } from './user.service';
 import { CommentService } from 'src/comment/comment.service';
 import { updateUserDto } from './dto/updateUserDto';
+import { CacheKey, CacheTTL } from '@nestjs/cache-manager';
 
 
 @Controller('user')
@@ -12,7 +13,10 @@ export class UserController {
         private readonly commentService:CommentService,
         ){}
     @Get(':id')
+    @CacheKey('custom_key')
+    @CacheTTL(20*1000)
     findOne(@Param("id") id:number){
+        console.log('cache')
         return this.userService.findOne(id)
     }
 
