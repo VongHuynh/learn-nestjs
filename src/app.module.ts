@@ -10,14 +10,13 @@ import { redisConfig } from 'src/config/redisConfig';
 import { RedisModule } from './redis/redis.module';
 
 
-console.log(redisConfig)
 @Module({
   imports: [
           UserModule, 
           CommentModule, 
           TypeOrmModule.forRoot(configOrm), 
-          RedisModule,
-          CacheModule.register(redisConfig), RedisModule
+          CacheModule.register(redisConfig), 
+          RedisModule
         ],
   controllers: [AppController],
   providers: [AppService],
