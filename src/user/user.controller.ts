@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param,Put, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param,Put, Post,  } from '@nestjs/common';
 import { CreateUserDto } from './dto/createUserDto';
 import { UserService } from './user.service';
 import { CommentService } from 'src/comment/comment.service';
@@ -15,9 +15,12 @@ export class UserController {
     @Get(':id')
     @CacheKey('custom_key')
     @CacheTTL(20*1000)
-    findOne(@Param("id") id:number){
-        console.log('cache')
-        return this.userService.findOne(id)
+    async findOne(@Param("id") id:number){
+        const userRes =  await this.userService.findOne(id)
+        if (!userRes){
+            return {"message": "user not found"}
+        }
+        return userRes
     }
 
     @Post()
