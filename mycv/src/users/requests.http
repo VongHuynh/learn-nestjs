@@ -1,0 +1,49 @@
+### create user
+POST  http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "abcdef3@gmail.com",
+    "password": "asdfadadsfadsf"
+}
+
+### sign in
+POST  http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "abcdef@gmail.com",
+    "password": "asdfadadsfadsf"
+}
+
+### sign out
+POST http://localhost:3000/auth/signout
+
+
+### find a particular user with given ID
+GET http://localhost:3000/auth/2
+
+
+### find by email
+GET http://localhost:3000/auth?email=ajdhfjad@gmail.com
+
+### delete user by id
+DELETE http://localhost:3000/auth/1
+
+### update user
+PATCH  http://localhost:3000/auth/2
+Content-Type: application/json
+
+{
+    "email": "aafasdffadsaa@gmail.com"
+}
+
+### set color
+GET http://localhost:3000/auth/colors/red
+
+### get color
+GET http://localhost:3000/auth/colors
+
+### whoaim
+GET http://localhost:3000/auth/whoami
+
