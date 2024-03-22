@@ -1,4 +1,4 @@
-import { CurrentUser } from './../users/decorators/current-user.decorator';
+import { CurrentUser } from '../decorators/current-user.decorator';
 import { 
     NestInterceptor,
     ExecutionContext,
