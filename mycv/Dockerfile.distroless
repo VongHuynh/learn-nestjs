@@ -12,8 +12,9 @@
     COPY --from=dependencies /app/node_modules ./node_modules
     RUN npm run build
     # ---- Release Distroless ----
-    FROM gcr.io/distroless/nodejs18-debian11
+    FROM gcr.io/distroless/nodejs18
 
     WORKDIR /app
     COPY --from=build /app .
+    USER nonroot
     CMD ["dist/main.js"]
